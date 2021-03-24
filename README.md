@@ -14,8 +14,8 @@ module "node" {
   region            = "bgo"
   node_count        = 2
   ssh_public_key    = "~/.ssh/id_rsa.pub"
-  allow_ssh_from_v6 = ['2001:700:200::/48']
-  allow_ssh_from_v4 = ['129.177.0.0/16']
+  allow_ssh_from_v6 = ["2001:700:200::/48"]
+  allow_ssh_from_v4 = ["129.177.0.0/16"]
   network           = "IPv6"
   flavor            = m1.medium
   image_name        = "GOLD Ubuntu 20.04"
