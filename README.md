@@ -2,9 +2,11 @@
 
 Terraform module for a [NREC](https://docs.nrec.no) instance
 
+Require [terraform](https://terraform.io) version >= 0.14
+
 ### Example
 
-main.tf:
+`main.tf`:
 ```terraform
 module "node" {
   source = "git@github.com:raykrist/tf-nrec-node.git"
@@ -24,7 +26,7 @@ module "node" {
 }
 ```
 
-output.tf:
+`output.tf`:
 ```terraform
 output "ansible_inventory_v6" {
   value = module.node.inventory_v6
