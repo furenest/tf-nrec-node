@@ -71,7 +71,7 @@ data "openstack_images_image_v2" "image" {
 resource "openstack_compute_instance_v2" "node" {
   count             = var.node_count
   name              = var.node_count > 1 ? "${format("${var.node_name}%03d", count.index + 1)}.${var.domain}" : "${var.node_name}.${var.domain}"
-  image_id          = var.image_id == "" ? var.image_id : data.openstack_images_image_v2.image.id
+  image_id          = var.image_id != "" ? var.image_id : data.openstack_images_image_v2.image.id
   region            = var.region
   flavor_name       = var.flavor
   key_pair          = "${var.name}-keys"

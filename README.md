@@ -1,6 +1,6 @@
 ## tf-nrec-node
 
-Terraform module for a [NREC](https://nrec.no) instance
+Terraform module for a [NREC](https://docs.nrec.no) instance
 
 ### Example
 
@@ -17,8 +17,8 @@ module "node" {
   allow_ssh_from_v6 = ["2001:700:200::/48"]
   allow_ssh_from_v4 = ["129.177.0.0/16"]
   network           = "IPv6"
-  flavor            = m1.medium
-  image_name        = "GOLD Ubuntu 20.04"
+  flavor            = "m1.medium"
+  image_name        = "GOLD Ubuntu 20.04 LTS"
   image_user        = "ubuntu" 
   volume_size       = 10
 }
@@ -35,6 +35,7 @@ output "ansible_inventory_v6" {
 Run:
 
 ```
+source openrc
 terraform init
 terraform apply
 terraform output ansible_inventory_v6
