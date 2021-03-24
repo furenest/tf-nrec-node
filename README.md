@@ -5,7 +5,7 @@ Terraform module for a [NREC](https://docs.nrec.no) instance
 ### Example
 
 main.tf:
-```
+```terraform
 module "node" {
   source = "git@github.com:raykrist/tf-nrec-node.git"
 
@@ -22,11 +22,10 @@ module "node" {
   image_user        = "ubuntu" 
   volume_size       = 10
 }
-
 ```
 
 output.tf:
-```
+```terraform
 output "ansible_inventory_v6" {
   value = module.node.inventory_v6
 }
@@ -34,10 +33,10 @@ output "ansible_inventory_v6" {
 
 Run:
 
-```
+```bash
 source openrc
 terraform init
 terraform apply
-terraform output ansible_inventory_v6
+terraform output -raw ansible_inventory_v6 > ansible_inventory
 ```
 
