@@ -55,7 +55,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
   region            = var.region
   direction         = "ingress"
   ethertype         = "IPv6"
-  protocol          = "icmp"
+  protocol          = "ipv6-icmp"
   remote_ip_prefix  = element(var.allow_icmp_from_v6, count.index)
   security_group_id = openstack_networking_secgroup_v2.basic.id
 }
@@ -70,7 +70,7 @@ data "openstack_images_image_v2" "image" {
 ## Create node instance
 resource "openstack_compute_instance_v2" "node" {
   count             = var.node_count
-  name              = var.node_count > 1 ? "${format("${var.node_name}%03d", count.index + 1)}.${var.domain}" : "${var.node_name}.${var.domain}"
+  name              = var.node_count > 1 ? "${format("${var.node_name}%03d", count.index + 1 + var.node_name_offset)}.${var.domain}" : "${var.node_name}.${var.domain}"
   image_id          = var.image_id != "" ? var.image_id : data.openstack_images_image_v2.image.id
   region            = var.region
   flavor_name       = var.flavor

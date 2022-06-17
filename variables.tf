@@ -36,9 +36,7 @@ variable "server_group" {
 
 variable "ssh_public_key" {}
 
-variable "ssh_port" {
-  default = 22
-}
+variable "ssh_port" { default = 22 }
 
 variable "node_count" { default = 1 }
 
@@ -48,6 +46,8 @@ variable "image_name" { default = "GOLD CentOS 7" }
 variable "node_name" {
   default = "node"
 }
+
+variable "node_name_offset" { default = 0 }
 
 variable "volume_name" {
   default = "vol"
