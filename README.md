@@ -2,14 +2,14 @@
 
 Terraform module for a [NREC](https://docs.nrec.no) instance
 
-Require [terraform](https://terraform.io) version >= 0.14
+Require [terraform](https://terraform.io) version >= 1.0
 
 ### Example
 
 `main.tf`:
 ```terraform
 module "node" {
-  source = "git@github.com:raykrist/tf-nrec-node.git"
+  source = "https://github.com/raykrist/tf-nrec-node.git"
 
   name              = "test"
   node_name         = "my-instance"
