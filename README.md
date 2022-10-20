@@ -9,7 +9,7 @@ Require [terraform](https://terraform.io) version >= 1.0
 `main.tf`:
 ```terraform
 module "node" {
-  source = "https://github.com/raykrist/tf-nrec-node.git"
+  source = "git::https://github.com/raykrist/tf-nrec-node.git"
 
   name              = "test"
   node_name         = "my-instance"
