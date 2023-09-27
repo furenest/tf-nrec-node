@@ -76,13 +76,15 @@ resource "openstack_compute_instance_v2" "node" {
   flavor_name       = var.flavor
   key_pair          = "${var.name}-keys"
   availability_zone = "${var.region}-${var.az}"
-  security_groups   = concat(["default","${var.name}_basic"], var.sec_group)
+  security_groups   = concat(["default", "${var.name}_basic"], var.sec_group)
 
   network {
     name = var.network
   }
-  metadata = var.metadata
+  metadata   = var.metadata
   depends_on = [openstack_networking_secgroup_v2.basic]
+
+  user_data = file("user-data.yaml")
 
   dynamic "scheduler_hints" {
     for_each = var.server_group

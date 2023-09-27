@@ -54,20 +54,20 @@ variable "volume_name" {
 }
 
 variable "network" {
-  default = "IPv6" 
+  default = "IPv6"
 }
 
-variable "az" { 
-  default = "default-1" 
+variable "az" {
+  default = "default-1"
 }
 
-variable "flavor" { 
+variable "flavor" {
   default = "m1.medium"
 }
 
 variable "zone_name" {
-  description = "Only set this if you have a designate zone and want hostname A and AAAA records" 
-  default = null
+  description = "Only set this if you have a designate zone and want hostname A and AAAA records"
+  default     = null
 }
 
 variable "domain" {
@@ -75,12 +75,12 @@ variable "domain" {
 }
 
 variable "metadata" {
-  type = map
+  type    = map(any)
   default = {}
 }
 
 variable "volume_size" {
-  default = 5 
+  default = 5
 }
 
 variable "volume_type" {

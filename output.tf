@@ -1,4 +1,4 @@
-variable "search"  { default = "/\\[(.*)\\]/" }
+variable "search" { default = "/\\[(.*)\\]/" }
 
 output "names" {
   value = openstack_compute_instance_v2.node.*.name
@@ -10,7 +10,7 @@ output "ipv4_addr" {
 
 output "ipv6_addr" {
   value = [
-    for node in openstack_compute_instance_v2.node:
+    for node in openstack_compute_instance_v2.node :
     replace(node.access_ip_v6, var.search, "$1")
   ]
 }
@@ -20,7 +20,7 @@ output "network_uuid" {
 }
 
 output "id" {
-  value = openstack_compute_instance_v2.node.*.id 
+  value = openstack_compute_instance_v2.node.*.id
 }
 
 
@@ -37,7 +37,7 @@ data "template_file" "ansible_host_v6" {
       "$1",
     )
     hostname = element(openstack_compute_instance_v2.node.*.name, count.index)
-    user = var.image_user
+    user     = var.image_user
   }
 }
 
@@ -54,7 +54,7 @@ data "template_file" "ansible_host_v4" {
       "$1",
     )
     hostname = element(openstack_compute_instance_v2.node.*.name, count.index)
-    user = var.image_user
+    user     = var.image_user
   }
 }
 
