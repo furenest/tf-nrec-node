@@ -84,6 +84,8 @@ resource "openstack_compute_instance_v2" "node" {
   metadata   = var.metadata
   depends_on = [openstack_networking_secgroup_v2.basic]
 
+  user_data = var.user_data != null ? file(var.user_data) : null
+
   dynamic "scheduler_hints" {
     for_each = var.server_group
     content {
